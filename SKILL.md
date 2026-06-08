@@ -1,38 +1,49 @@
 ---
 name: ux-case-study-writer
-description: Write portfolio-grade UX/service-design case study briefs across all 4 rounds of the design-thinking double diamond. Use whenever the user wants to produce a case study, research brief, empathy deep dive, problem convergence brief, or solution-design presentation in the Team Dua style. Trigger on "write my case study", "case study Round N", "discovery brief", "empathy phase", "problem narrowing", "solution brief", "design my portfolio case study", or any request for a structured design-thinking deliverable that synthesizes research into a narrative document. This skill orchestrates 4 phase-specific sub-skills, each producing a distinct multi-page brief.
+description: Write portfolio-grade UX/service-design case study briefs across all 4 rounds of the design-thinking double diamond. Trigger on "write my case study", "case study Round N", "discovery brief", "empathy phase", "problem narrowing", "solution brief", "design my portfolio case study", or any request for a structured design-thinking deliverable. Works for any geography, any domain, solo or team.
 metadata:
   category: "ux"
   tags: ["case-study", "service-design", "design-thinking", "portfolio", "UX-research", "double-diamond", "HMW", "empathy-map", "persona", "journey-map"]
 ---
 
-# UX Case Study Writer (Team Dua Style)
+# UX Case Study Writer
 
-## Overview
+A 4-phase skill that produces portfolio-grade service-design case study briefs following the design-thinking double diamond. Each phase builds on the previous. The output is a content + layout specification the user takes into Figma, Canva, or InDesign.
 
-A 4-phase skill system that produces portfolio-grade service-design case study briefs following the design-thinking double diamond. Each phase builds on the previous, narrowing from global context to a tested solution. The output is a content + layout specification the user takes into Figma, Canva, or InDesign.
+## Hard Constraints
+
+These are the only enforced rules. Everything else is guidance — adapt to the user's needs.
 
 ```
-IRON LAW: Each phase REQUIRES the previous phase's deliverables as input.
-Skipping a phase or fabricating prior-round content produces a brief that
-fails portfolio review. If the user hasn't completed prior rounds, help
-them finish those first — do not invent continuity.
+1. DIAMOND SHAPE: Phase 1 narrows, Phase 2 expands, Phase 3 narrows, Phase 4 delivers.
+   If this shape is broken, the case study's argument doesn't work.
+
+2. NO FABRICATION: Every statistic needs a named, real source. Every quote must be
+   verbatim from a real interview. If data doesn't exist, say so — don't invent it.
+
+3. NO SOLUTION LEAKAGE: Phases 1-3 must not name products, apps, or specific solutions.
+   Opportunities are directions. Solutions appear only in Phase 4.
+
+4. CONTINUITY CHECKPOINT: At the start of each phase (2-4), restate the current HMW,
+   target user, and geography. If any changed from the prior phase, acknowledge the
+   change explicitly rather than silently drifting.
+
+5. NEVER SILENTLY RESOLVE CONFLICTS: When user inputs contain contradictions, surface
+   both interpretations and let the user choose.
 ```
 
-## When to Use
+## Guidance (not rules — adapt as needed)
 
-- User asks for a portfolio case study in UX / service-design style
-- User asks for any specific round: "write my Round 1/2/3/4"
-- User wants a research brief, empathy map, problem scoring, or solution presentation
-- User says "make me a case study like this" with a design-school deliverable as reference
-- User asks for a How-Might-We problem statement with supporting research
-
-## When NOT to Use
-
-- Academic case study research (Yin methodology) — use `grad-case-study` instead
-- Business strategy case studies (HBS style) — use `biz-*` skills instead
-- UX audit or heuristic evaluation — different deliverable type
-- Wireframes, prototypes, or UI design — this skill produces content specs, not designs
+- **Voice:** First-person plural ("we," "our") works for both solo and team. Match explanation depth to the user's familiarity.
+- **Tense:** Past for research actions, present for findings, future-conditional for impacts.
+- **Bolding:** Bold 2-4 word key phrases (noun phrases), not whole sentences.
+- **Empathy without melodrama:** Show difficulty + counterweight ("Despite these difficulties...").
+- **Avoid AI-prose tells:** "delve," "navigate the complexities," "in today's fast-paced world," "comprehensive," "holistic," "robust" as filler.
+- **Adapt your mode:** Coach when the user is stuck, write when they have inputs, track progress when they're managing phases. Don't lock into one role.
+- **Solo is the default.** If team members are named, activate team elements (credit line, multi-scorer radar). Never require team inputs.
+- **Geography-agnostic by default.** The structural patterns (funnel, personas, scoring, HMW) are universal. Cultural scripts, data sources, and regulatory context adapt to the user's stated geography.
+- **Impact framework is domain-dependent.** Default to a generic 5-7 dimension impact model. Offer the wellbeing radar as one option for health/social/caregiving domains. Let users define custom dimensions.
+- **Primary research produces the best output.** If interviews aren't available, proceed with secondary research and clearly label assumption-based sections. Note evidence source limitations in the self-audit.
 
 ## The 4 Phases
 
@@ -45,9 +56,9 @@ them finish those first — do not invent continuity.
 
 ### Phase 1: Discovery Brief (Define)
 
-Funnels from global context to a sharp HMW question. The single most important pattern is **progressive narrowing** — each section's noun phrase is more specific than the last.
+Funnels from global context to a sharp HMW question. The key pattern is **progressive narrowing** — each section's noun phrase is more specific than the last.
 
-**Document anatomy:** Introduction > Global Scenario > National Perspective > Impact on Sub-group > Interview Insights > Emotional Arc > Wellbeing Framework > Opportunities > Problem Statement
+**Document anatomy:** Introduction > Global Scenario > National Perspective > Impact on Sub-group > Interview Insights > Emotional Arc > Framework > Opportunities > Problem Statement
 
 **Full spec:** `references/phase-1-discovery.md`
 **Input checklist:** `references/input-checklist-phase-1.md`
@@ -63,9 +74,9 @@ Takes the Round 1 HMW and **opens it back up** into a comprehensive problem spac
 
 ### Phase 3: Problem Convergence (Converge)
 
-Team scores candidate problems, selects one, maps its ecosystem, builds the business case, and refines the HMW into sub-HMWs + a formal need statement.
+Scores candidate problems, selects one, maps its ecosystem, builds the business case, and refines the HMW into sub-HMWs + a formal need statement.
 
-**Document anatomy:** HMW Restatement > Problem Scoring Radar > Narrowing Down > Ecosystem Map > Pain Points > Regional Scenario > Setbacks > Impact > Business Viability > Sub-HMWs > Need Statement
+**Document anatomy:** HMW Restatement > Problem Scoring > Narrowing Down > Ecosystem Map > Pain Points > Regional Scenario > Setbacks > Impact > Business Viability > Sub-HMWs > Need Statement
 
 **Full spec:** `references/phase-3-convergence.md`
 **Input checklist:** `references/input-checklist-phase-3.md`
@@ -74,7 +85,7 @@ Team scores candidate problems, selects one, maps its ecosystem, builds the busi
 
 Presents the final solution with cause-effect synthesis, ideation breadth, validation data, named features, service flow, FAQs, and impact case.
 
-**Document anatomy:** Background Recap > Cause & Effect Tree > How-to Questions > Co-creation & A/B Testing > Solution Reveal > Key Features > Service Flow > FAQs > Benefits > Wellbeing Return > Impact > Scalability > Closing Statement
+**Document anatomy:** Background Recap > Cause & Effect Tree > How-to Questions > Co-creation & Testing > Solution Reveal > Key Features > Service Flow > FAQs > Benefits > Framework Return > Impact > Scalability > Closing Statement
 
 **Full spec:** `references/phase-4-solution.md`
 **Input checklist:** `references/input-checklist-phase-4.md`
@@ -82,46 +93,33 @@ Presents the final solution with cause-effect synthesis, ideation breadth, valid
 ## Operating Procedure
 
 1. **Identify the phase.** Ask the user which round they need, or infer from context.
-2. **Load the phase spec.** Read the corresponding `references/phase-N-*.md` file.
-3. **Verify inputs.** Read the corresponding `references/input-checklist-phase-N.md`. Confirm mandatory inputs are present. Flag missing high-value optional inputs.
-4. **Check continuity.** For Phases 2-4, verify that prior-round deliverables exist and are consistent.
-5. **Do real research.** Search for current statistics. Cite named sources. Never fabricate.
-6. **Draft section by section** following the phase spec's playbook. For each section, output prose + statistics + "Visual elements to design" callout.
-7. **Audit against failure modes** listed in the phase spec.
-8. **Self-score** using the phase's Scoring Benchmark. Revise any dimension that misses its target before delivering.
-9. **Deliver** as a single markdown document with page breaks and section headings. Include self-audit scores.
+2. **Load only the active phase's spec** — never load all reference files at once.
+3. **Assess what the user has.** For areas with data, validate and extract. For gaps, guide them on how to fill it or proceed with stated limitations. Don't ask the user to self-categorize their readiness.
+4. **Parse any pasted content best-effort.** Show the user what was extracted and confirm before proceeding. If parsing fails, ask the user to restructure.
+5. **Check continuity (Phases 2-4).** If the HMW, target user, or geography changed from the prior phase, acknowledge it explicitly.
+6. **Do real research.** Search for current statistics. Include source dates. Never fabricate.
+7. **Draft directly.** After collecting inputs, proceed to drafting. Don't front-load a template review step.
+8. **Always deliver.** Include self-audit scores as a diagnostic, not a gate. Highlight the weakest dimension and suggest what would improve it. Never block delivery on an internal score.
+9. **Output a Project State block** at the end of each phase — a compact summary (HMW, target user, geography, team, key artifacts) the user pastes back when starting the next phase. Keep it under 30 lines.
 10. **Offer next steps:** iteration on specific sections, visual mockup, or advancing to the next phase.
 
-## Cross-Phase Consistency Rules
+## Input Handling
 
-These rules apply across ALL phases:
+- **Target user:** Show the demographic-vs-life-phase distinction with one example ("'women aged 25-40' is a demographic; 'women in early stages of motherhood' is a life phase — life phases generate emotional arcs"). Confirm their intent. Don't algorithmically reject valid demographic scoping.
+- **Scoring data (Phase 3):** Accept any format — spreadsheet paste, summary narratives, ranked lists. If individual scores aren't available, work with team-level rankings or relative comparisons. The insight matters more than the matrix.
+- **Validation data (Phase 4):** Include methodology details (N, method, materials) in the output alongside stats. Make the evidence trail visible so reviewers can assess credibility.
+- **Reactivated stats:** Include the source date. If a stat is notably old relative to a fast-changing domain, note this — but don't block or auto-reject.
+- **HMW pivots:** Allow them. Pivots mean the research is working. Note what changed and flag which prior-phase artifacts may need updating. Don't force a full restart for a scope adjustment.
 
-- **Voice:** First-person plural ("we," "our"). Never "I" or "the researchers."
-- **Tense:** Past for research actions, present for findings, future-conditional for impacts.
-- **Hedging:** Soft-hedge most claims. "Often face," "many of which," "anticipate."
-- **Bolding:** Bold only 2-4 word key phrases (noun phrases), never whole sentences.
-- **Statistics:** Every numeric claim needs a named, real source. No fabrication.
-- **Empathy without melodrama:** Show difficulty + counterweight ("Despite these difficulties...").
-- **No AI-prose tells:** Ban "delve," "navigate the complexities," "in today's fast-paced world," "comprehensive," "holistic," "robust" as filler.
-- **No solution leakage** in research phases (1-3). Opportunities are directions, not products.
-- **Team credit** at the bottom of every brief's final page.
+## Visual Design Language
 
-## Visual Design Language (All Phases)
+These are defaults — adapt to user preferences if stated.
 
 - **Palette:** Soft pastels. Primary warm coral (#E89598). Secondary cream (#FCF4ED). Text dark plum.
 - **Typography:** Sans-serif. Display weight for headers. Statistics rendered 3-5x body size.
 - **Iconography:** Custom line-art icons. Single weight, rounded corners, figurative subjects.
-- **Layout:** 2-column predominant. Generous whitespace. Each page uncrowded.
+- **Layout:** 2-column predominant. Generous whitespace.
 - **Quote callouts:** Oversized quotation marks. Attribution in italics.
-
-## Gotchas
-
-1. **Fabricating prior-round content for continuity** — if Round 1 doesn't exist, don't fake an HMW to start Round 2. Help the user complete Round 1 first.
-2. **Treating all 4 phases as one document** — each phase is a standalone multi-page brief with its own scoring benchmark. Don't merge them.
-3. **Skipping the input checklist verification** — the skill is only as good as its inputs. Generic inputs produce generic output. Always verify before drafting.
-4. **Using the same statistics across phases** — each phase should introduce new evidence from deeper research, not recycle Round 1 stats (except deliberate stat-reactivation in Round 4).
-5. **Losing the funnel discipline** — Phase 1 narrows, Phase 2 expands, Phase 3 narrows again, Phase 4 presents. If Phase 2 is still narrowing or Phase 3 is still expanding, the diamond shape is broken.
-6. **Solution leakage before Phase 4** — Phases 1-3 must not name products, apps, or specific solutions. Opportunities are directions. Solutions appear only in Phase 4.
 
 ## Output Format
 
@@ -140,12 +138,10 @@ Each phase outputs a markdown document structured as numbered pages:
 [Statistics with sources]
 
 ---
-
 ## Page 2
 [...]
 
 ---
-
 ## Self-Audit Scores
 
 | Dimension | Score | Justification |
@@ -154,15 +150,34 @@ Each phase outputs a markdown document structured as numbered pages:
 | [Dim 2] | X/10 | [one sentence] |
 | [Dim 3] | X/10 | [one sentence] |
 | [Dim 4] | X/10 | [one sentence] |
+
+---
+## Project State (paste this back for the next phase)
+
+- **Phase completed:** N
+- **HMW:** [current question]
+- **Target user:** [current definition]
+- **Geography:** [current context]
+- **Team:** [names, or "solo"]
+- **Key artifacts:** [list what this phase produced]
 ```
+
+## Gotchas
+
+1. **Fabricating prior-round content** — if Round 1 doesn't exist, help the user complete it first. Don't invent continuity.
+2. **Merging all 4 phases into one document** — each phase is a standalone brief with its own scoring benchmark.
+3. **Recycling the same statistics across phases** — each phase should introduce new evidence from deeper research (except deliberate stat-reactivation in Round 4).
+4. **Forcing the wellbeing framework on non-health domains** — use domain-appropriate impact frameworks.
+5. **Requiring team inputs from solo users** — solo is the default. Team features activate only when team data is provided.
+6. **Hardcoding India-specific assumptions** — structural patterns are universal. Cultural specifics come from the user's stated geography.
 
 ## References
 
-- `references/phase-1-discovery.md` — Full Phase 1 writing playbook + scoring benchmark
-- `references/phase-2-empathy.md` — Full Phase 2 writing playbook + scoring benchmark
-- `references/phase-3-convergence.md` — Full Phase 3 writing playbook + scoring benchmark
-- `references/phase-4-solution.md` — Full Phase 4 writing playbook + scoring benchmark
-- `references/input-checklist-phase-1.md` — Phase 1 mandatory + optional inputs template
-- `references/input-checklist-phase-2.md` — Phase 2 mandatory + optional inputs template
-- `references/input-checklist-phase-3.md` — Phase 3 mandatory + optional inputs template
-- `references/input-checklist-phase-4.md` — Phase 4 mandatory + optional inputs template
+- `references/phase-1-discovery.md` — Phase 1 writing playbook + scoring benchmark
+- `references/phase-2-empathy.md` — Phase 2 writing playbook + scoring benchmark
+- `references/phase-3-convergence.md` — Phase 3 writing playbook + scoring benchmark
+- `references/phase-4-solution.md` — Phase 4 writing playbook + scoring benchmark
+- `references/input-checklist-phase-1.md` — Phase 1 inputs template
+- `references/input-checklist-phase-2.md` — Phase 2 inputs template
+- `references/input-checklist-phase-3.md` — Phase 3 inputs template
+- `references/input-checklist-phase-4.md` — Phase 4 inputs template
