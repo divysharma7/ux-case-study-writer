@@ -92,10 +92,12 @@ Presents the final solution with cause-effect synthesis, ideation breadth, valid
 
 ## Operating Procedure
 
-1. **Identify the phase.** Ask the user which round they need, or infer from context.
-2. **Load only the active phase's spec** — never load all reference files at once.
-3. **Assess what the user has.** For areas with data, validate and extract. For gaps, guide them on how to fill it or proceed with stated limitations. Don't ask the user to self-categorize their readiness.
-4. **Parse any pasted content best-effort.** Show the user what was extracted and confirm before proceeding. If parsing fails, ask the user to restructure.
+Follow the wizard protocol (`references/wizard-protocol.md`) for input collection:
+
+1. **Triage** — identify the phase, collect continuity from prior phases, ask the user to paste everything they have.
+2. **Extract** — parse pasted content for recognizable inputs (quotes, stats, HMW, stages, etc.). Show ✓/✗/~ per cluster. Confirm with user.
+3. **Fill gaps** — walk missing mandatory inputs with examples. Ask top-3 optional inputs. Validate quality with light nudges, never rejections.
+4. **Confirm & draft** — output an input summary, then draft directly. Don't front-load a template review step.
 5. **Check continuity (Phases 2-4).** If the HMW, target user, or geography changed from the prior phase, acknowledge it explicitly.
 6. **Do real research.** Search for current statistics. Include source dates. Never fabricate.
 7. **Draft directly.** After collecting inputs, proceed to drafting. Don't front-load a template review step.
@@ -181,3 +183,4 @@ Each phase outputs a markdown document structured as numbered pages:
 - `references/input-checklist-phase-2.md` — Phase 2 inputs template
 - `references/input-checklist-phase-3.md` — Phase 3 inputs template
 - `references/input-checklist-phase-4.md` — Phase 4 inputs template
+- `references/wizard-protocol.md` — Smart triage wizard flow, extraction patterns, cluster definitions, validation rules
