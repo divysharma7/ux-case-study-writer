@@ -1,7 +1,7 @@
 # Discovery Brief Case Study — Working Mothers' Wellbeing
 
 **Gold-Standard Example Output**
-This is what the UX Case Study Writer skill should produce for Phase 1 when given complete inputs. Every section follows the phase-1-discovery.md playbook exactly. Use this as a reference for tone, structure, depth, and visual specifications.
+This is what the UX Case Study Writer skill should produce for Phase 1 when given complete inputs. Every section follows the rounds/01-discovery/playbook.md exactly. Use this as a reference for tone, structure, depth, and visual specifications.
 
 **Inputs used:** Team Dua's working mothers wellbeing project (India, urban nuclear families). All mandatory and optional inputs were provided.
 

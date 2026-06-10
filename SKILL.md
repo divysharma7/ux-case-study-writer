@@ -60,8 +60,8 @@ Funnels from global context to a sharp HMW question. The key pattern is **progre
 
 **Document anatomy:** Introduction > Global Scenario > National Perspective > Impact on Sub-group > Interview Insights > Emotional Arc > Framework > Opportunities > Problem Statement
 
-**Full spec:** `references/phase-1-discovery.md`
-**Input checklist:** `references/input-checklist-phase-1.md`
+**Full spec:** `rounds/01-discovery/playbook.md`
+**Input checklist:** `rounds/01-discovery/inputs.md`
 
 ### Phase 2: Empathy Deepening (Empathize 2.0)
 
@@ -69,8 +69,8 @@ Takes the Round 1 HMW and **opens it back up** into a comprehensive problem spac
 
 **Document anatomy:** Filtration Funnel > Cultural Scenario > Existing Services Audit > Stakeholder Map > Stakeholder Quotes > Problem Space Mind-Map > Experience Map > Personas > Invalidated Assumptions
 
-**Full spec:** `references/phase-2-empathy.md`
-**Input checklist:** `references/input-checklist-phase-2.md`
+**Full spec:** `rounds/02-empathy/playbook.md`
+**Input checklist:** `rounds/02-empathy/inputs.md`
 
 ### Phase 3: Problem Convergence (Converge)
 
@@ -78,8 +78,8 @@ Scores candidate problems, selects one, maps its ecosystem, builds the business 
 
 **Document anatomy:** HMW Restatement > Problem Scoring > Narrowing Down > Ecosystem Map > Pain Points > Regional Scenario > Setbacks > Impact > Business Viability > Sub-HMWs > Need Statement
 
-**Full spec:** `references/phase-3-convergence.md`
-**Input checklist:** `references/input-checklist-phase-3.md`
+**Full spec:** `rounds/03-convergence/playbook.md`
+**Input checklist:** `rounds/03-convergence/inputs.md`
 
 ### Phase 4: Solution Design (Deliver)
 
@@ -87,12 +87,12 @@ Presents the final solution with cause-effect synthesis, ideation breadth, valid
 
 **Document anatomy:** Background Recap > Cause & Effect Tree > How-to Questions > Co-creation & Testing > Solution Reveal > Key Features > Service Flow > FAQs > Benefits > Framework Return > Impact > Scalability > Closing Statement
 
-**Full spec:** `references/phase-4-solution.md`
-**Input checklist:** `references/input-checklist-phase-4.md`
+**Full spec:** `rounds/04-solution/playbook.md`
+**Input checklist:** `rounds/04-solution/inputs.md`
 
 ## Operating Procedure
 
-Follow the wizard protocol (`references/wizard-protocol.md`) for input collection:
+Follow the wizard protocol (`references/wizard.md`) for input collection:
 
 1. **Triage** — identify the phase, collect continuity from prior phases, ask the user to paste everything they have.
 2. **Extract** — parse pasted content for recognizable inputs (quotes, stats, HMW, stages, etc.). Show ✓/✗/~ per cluster. Confirm with user.
@@ -175,12 +175,13 @@ Each phase outputs a markdown document structured as numbered pages:
 
 ## References
 
-- `references/phase-1-discovery.md` — Phase 1 writing playbook + scoring benchmark
-- `references/phase-2-empathy.md` — Phase 2 writing playbook + scoring benchmark
-- `references/phase-3-convergence.md` — Phase 3 writing playbook + scoring benchmark
-- `references/phase-4-solution.md` — Phase 4 writing playbook + scoring benchmark
-- `references/input-checklist-phase-1.md` — Phase 1 inputs template
-- `references/input-checklist-phase-2.md` — Phase 2 inputs template
-- `references/input-checklist-phase-3.md` — Phase 3 inputs template
-- `references/input-checklist-phase-4.md` — Phase 4 inputs template
-- `references/wizard-protocol.md` — Smart triage wizard flow, extraction patterns, cluster definitions, validation rules
+- `rounds/01-discovery/playbook.md` — Phase 1 writing playbook + scoring benchmark
+- `rounds/02-empathy/playbook.md` — Phase 2 writing playbook + scoring benchmark
+- `rounds/03-convergence/playbook.md` — Phase 3 writing playbook + scoring benchmark
+- `rounds/04-solution/playbook.md` — Phase 4 writing playbook + scoring benchmark
+- `rounds/01-discovery/inputs.md` — Phase 1 inputs template
+- `rounds/02-empathy/inputs.md` — Phase 2 inputs template
+- `rounds/03-convergence/inputs.md` — Phase 3 inputs template
+- `rounds/04-solution/inputs.md` — Phase 4 inputs template
+- `references/wizard.md` — Smart triage wizard flow, extraction patterns, cluster definitions, validation rules
+- `references/peer-review.md` — Evaluation checklist for humans or AI

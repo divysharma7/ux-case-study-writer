@@ -443,7 +443,7 @@ If any dimension scores below target after the first draft, revise that dimensio
 
 When the user invokes this skill:
 
-1. **Verify inputs against the input checklist.** Read `references/input-checklist.md` and confirm the user has provided the mandatory inputs. If anything mandatory is missing, ask for it before drafting — do not invent. If high-value optional inputs are missing, note which ones and explain how their absence will limit the output's quality. Offer the user the choice to either provide more inputs or proceed with a clearly-flagged draft.
+1. **Verify inputs against the input checklist.** Read `inputs.md` (sibling file in this round folder) and confirm the user has provided the mandatory inputs. If anything mandatory is missing, ask for it before drafting — do not invent. If high-value optional inputs are missing, note which ones and explain how their absence will limit the output's quality. Offer the user the choice to either provide more inputs or proceed with a clearly-flagged draft.
 
 2. **Do real research.** Search the web for current statistics relevant to each section. Cite named sources. Do not fabricate numbers. If a needed statistic cannot be sourced after a reasonable search, remove the claim — do not weaken the source citation to fit a number you couldn't verify.
 
@@ -469,4 +469,4 @@ When the user invokes this skill:
 
 ## Reference files
 
-- `references/input-checklist.md` — The full list of mandatory and high-value optional inputs the user should provide before invoking the skill, plus a fillable template. Read this at the start of every invocation to verify inputs.
+- `inputs.md` (sibling file in this round folder) — The full list of mandatory and high-value optional inputs the user should provide before invoking the skill, plus a fillable template. Read this at the start of every invocation to verify inputs.

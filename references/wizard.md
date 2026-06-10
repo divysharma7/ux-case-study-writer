@@ -185,7 +185,7 @@ Proceeding to draft Phase N...
 
 ### Then draft
 
-Load the active phase's spec (`references/phase-N-*.md`) and draft directly. Don't ask for additional confirmation — the input summary IS the confirmation.
+Load the active phase's spec (`rounds/0N-*/playbook.md`) and draft directly. Don't ask for additional confirmation — the input summary IS the confirmation.
 
 ### After drafting — output Project State
 

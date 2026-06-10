@@ -583,7 +583,7 @@ When the user invokes this skill:
 
 2. **Verify the chosen problem traces back to Round 2's problem mapping.** Ask the user where in Round 2 the chosen problem first appeared. If it doesn't appear, flag this incoherence before drafting.
 
-3. **Verify inputs against the input checklist.** Read `references/input-checklist.md` and confirm mandatory Round 3 inputs are provided. If anything mandatory is missing, ask before drafting. Note any high-value optional inputs that are missing and how their absence will limit output quality.
+3. **Verify inputs against the input checklist.** Read `inputs.md` (sibling file in this round folder) and confirm mandatory Round 3 inputs are provided. If anything mandatory is missing, ask before drafting. Note any high-value optional inputs that are missing and how their absence will limit output quality.
 
 4. **Do real research.** Search the web for:
    - Real failure statistics on the existing-service category for Page 3 (e.g., government evaluation reports)
@@ -614,4 +614,4 @@ When the user invokes this skill:
 
 ## Reference files
 
-- `references/input-checklist.md` — The full list of mandatory and high-value optional inputs the user should provide before invoking the skill, plus a fillable template. Read at the start of every invocation to verify inputs.
+- `inputs.md` (sibling file in this round folder) — The full list of mandatory and high-value optional inputs the user should provide before invoking the skill, plus a fillable template. Read at the start of every invocation to verify inputs.

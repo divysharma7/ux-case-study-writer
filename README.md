@@ -1,138 +1,141 @@
-# UX Case Study Writer
+# ux-case-study-writer
 
-Most design students spend 40+ hours writing one case study. It still reads like a ChatGPT summary.
+> "Most UX case studies read like ChatGPT summaries with a coral palette slapped on top." — every reviewer who's read 200 portfolios
 
-This is a Claude Agent Skill that produces portfolio-grade UX case study briefs. 4 phases. Double diamond. Any domain. Any geography. Solo or team.
+When I heard a hiring manager say this, I wanted to find out how to fix it. How does one design student ship a case study that reads like a senior team wrote it after months of research? Team Dua's working-mothers wellbeing brief — built for a real design school project — scored portfolio-grade on the first pass. The revolution is here. A single student with the right tooling can write briefs that look like a 5-person studio produced them.
 
-You paste your research. It writes the brief. You take it to Figma.
+I'm **Divy Sharma**, a Product Manager who's been writing case studies and watching other PMs and designers write them for years. I've reviewed dozens of portfolios — the same six failure modes show up every time. Vague HMW questions. Fabricated statistics. Solution leakage in the discovery phase. Personas that aren't meaningfully different. Stat pairs that don't pair. Emotional arcs that are flat as a board. Before this skill, I'd written four case study briefs the hard way — by hand, over 40+ hours each — and I knew exactly which paragraphs were load-bearing and which were filler.
 
-Not a template. Not a fill-in-the-blank worksheet. A 2,300+ line writing system that knows exactly what a Discovery Brief's third paragraph should do, what stat pair type goes on Page 2, and why your emotional arc can't be monotonic.
+**ux-case-study-writer is my answer.** I've been writing case studies for years, and right now I'm producing more portfolio-grade briefs than I ever have. What sits in this repo: 4 standalone phase playbooks across the full double diamond (~2,300 lines), 1 worked-example gold-standard brief, a smart triage wizard that parses messy notes into 12 input clusters, and a peer-review checklist that scores every brief on 4 dimensions. On logical case-study output — not raw word count, which AI inflates — this skill compresses what used to take 40+ hours of writing into a single afternoon of focused input collection and review. The point isn't who typed it, it's what got delivered to the portfolio.
 
----
+> The AI-prose critics aren't wrong that generic case study generators inflate word counts. They are wrong that normalized-for-inflation, this skill produces less rigorous work. It produces more rigorous work, by a lot. Full methodology, scoring benchmarks, and worked examples: **[examples/round-1-gold.md](examples/round-1-gold.md)**.
 
-## What actually comes out
+Same designer. Different era. The difference is the tooling.
 
-4 standalone briefs, one per phase:
+**ux-case-study-writer is how I do it.** It turns Claude into a virtual design research team — a Researcher who funnels global context into a sharp HMW, an Ethnographer who blows the problem space open with fieldwork and personas, a Strategist who scores candidate problems and writes the formal need statement, a Designer who names the solution and shows the validation data, a Triage Wizard who parses your messy pasted notes into 12 recognizable input clusters, and a Peer Reviewer who scores every brief on 4 dimensions before delivery. Four specialists and a wizard, all in one skill, all Markdown, all free, MIT license.
 
-```
-Phase 1: Discovery Brief       4 pages.  Global context → sharp HMW question.
-Phase 2: Empathy Deepening     5 pages.  Ecosystem maps, personas, experience maps.
-Phase 3: Problem Convergence   4 pages.  Problem scoring, business case, need statement.
-Phase 4: Solution Design       4 pages.  Named solution, features, validation, impact.
-```
+This is my open-source case-study factory. I use it every time I write a brief. I'm sharing it because these tools should be available to every design student.
 
-Each brief includes:
-- Actual prose (not bullet points)
-- Sourced statistics (real sources, not fabricated)
-- Visual element callouts telling you exactly what to design in Figma
-- Self-audit scores so you know where it's strong and where it's thin
+Fork it. Improve it. Make it yours. And if you want to hate on free open-source design skills — you're welcome to, but I'd rather you just try it first.
 
-The output is a content + layout spec. Claude writes the words and describes every chart, icon, and diagram. You handle the pixels.
+**Who this is for:**
+- **Design students** — especially the ones with research notes but no idea how to turn them into a brief
+- **First-time Claude Code users** — structured phases instead of a blank prompt
+- **Senior designers and design educators** — rigorous playbooks, scoring benchmarks, and failure modes on every brief
 
----
+## Quick start
 
-## How it works — the wizard
+1. Install the skill (30 seconds — see below)
+2. Run `write my case study` — describe your topic
+3. Paste your notes — interview quotes, statistics, anything you have
+4. Let the wizard extract what's there and ask for what's missing
+5. Get a 4-page Phase 1 brief with stats, visual specs, and self-audit scores
+6. Stop there. You'll know if this is for you.
 
-People think you need a perfectly organized input doc to get a good case study.
+## Install — 30 seconds
 
-Reality: you paste a mess of notes and the wizard figures it out.
+**Requirements:** [Claude Code](https://docs.anthropic.com/en/docs/claude-code), [Git](https://git-scm.com/)
 
-### The 4-stage flow
+### Step 1: Install on your machine
 
-```
-TRIAGE → EXTRACT → FILL GAPS → CONFIRM & DRAFT
-```
+Open Claude Code and paste this. Claude does the rest.
 
-**Stage 1: Triage.** Three messages, max. Identifies your phase. If you don't know which phase you're in, it figures it out:
-- No prior research? Phase 1.
-- Have an HMW but no fieldwork? Phase 2.
-- Have personas but haven't picked a problem? Phase 3.
-- Have a designed solution? Phase 4.
+> Install ux-case-study-writer: run **`git clone --depth 1 https://github.com/divysharma7/ux-case-study-writer.git ~/.claude/skills/ux-case-study-writer`** then add a "ux-case-study-writer" section to CLAUDE.md that says to trigger the skill on phrases like "write my case study", "case study Round N", "discovery brief", "empathy phase", "problem narrowing", or "solution brief". Then ask the user if they want a worked example walkthrough first.
 
-For Phases 2-4, it asks for your Project State block from the previous phase. Or your previous brief. Or just your HMW and target user. Whatever you have.
+### Step 2: Project mode — keep the skill versioned with your portfolio repo (recommended)
 
-**Stage 2: Extract.** You paste everything — raw interview notes, spreadsheet data, transcripts, statistics, prior briefs. The wizard parses it against 12 pattern types:
+From inside your portfolio repo, paste this. Vendors the skill into the repo so collaborators and graders get the exact same version you used:
 
-| What it finds | What it maps to |
-|---------------|----------------|
-| Text in quotes with attribution | Interview quote |
-| Percentages + source names | Statistics |
-| "How might we..." sentences | HMW question |
-| Life-phase language ("early stages of," "first-time") | Target user |
-| Country/city names | Geography |
-| Sequential stages with arrows | Journey stages |
-| Scored matrices or ranked lists | Scoring data |
-| Feature descriptions | Key features (Phase 4) |
-| Q:/A: blocks | FAQs (Phase 4) |
-
-Then it shows you what it found:
-
-```
-Cluster A — Project Identity
-  ✓ Topic: wellbeing of working women in India
-  ✓ Target user: working women in early stages of motherhood
-  ✗ Geography: not found
-  ✓ Team: Team Dua
-
-Cluster B — Research Evidence
-  ✓ Quote: "She is a human before she's a mother" — Shikha Handa
-  ✓ Stats: 3 found
-  ✗ Methodology summary: not found
-
-Is this correct? For the missing items — do you have them,
-or should we proceed without?
+```bash
+git submodule add https://github.com/divysharma7/ux-case-study-writer.git .claude/skills/ux-case-study-writer && git add .gitmodules .claude/ && git commit -m "add ux-case-study-writer skill"
 ```
 
-Over-extracts and lets you correct. Never guesses silently.
+No version drift, no "but it worked on my machine when I submitted it." Every Claude Code session in this repo gets the same playbooks, the same scoring benchmarks, the same wizard flow.
 
-**Stage 3: Fill Gaps.** Missing mandatory inputs get one focused question each. With an example. And a common mistake to avoid.
+### Other AI Agents
 
-It won't ask more than 3 questions in a row without offering to just proceed.
+ux-case-study-writer is just Markdown. It works anywhere an agent can read SKILL.md and follow the references. Tested on Claude Code. Should work on any agent that supports skills:
 
-For optional inputs, it picks the top 3 that would most improve the output:
+| Agent | Install to |
+|-------|-------------------|
+| Claude Code | `~/.claude/skills/ux-case-study-writer/` |
+| OpenAI Codex CLI | `~/.codex/skills/ux-case-study-writer/` |
+| OpenCode | `~/.config/opencode/skills/ux-case-study-writer/` |
+| Cursor | `~/.cursor/skills/ux-case-study-writer/` |
+
+**Want to add support for another agent?** Open an issue. It's one path, zero code changes.
+
+## See it work
 
 ```
-These optional inputs would significantly improve your brief:
-1. Three interview insights — improves Page 2 insight blocks
-2. Five journey stages — improves Page 3 emotional arc
-3. Draft HMW question — improves Page 4 problem statement
+You:    write my case study
+Claude: Which phase — 1, 2, 3, or 4? If you don't know, tell me what
+        you have and I'll figure out where you are in the diamond.
 
-Want to provide any of these, or proceed without?
+You:    Topic: financial literacy for first-time earners in urban India.
+        I interviewed 4 people. Here are the notes: [paste 800 words]
+
+Claude: [extracts against 12 pattern types — quotes, stats, HMW,
+        life-phase language, geography, journey stages, scoring data]
+
+        Cluster A — Project Identity
+          ✓ Topic: financial literacy for first-time earners
+          ✓ Target user: first-time earners navigating independent finances
+          ✓ Geography: urban India
+          ✗ Team: not found
+
+        Cluster B — Research Evidence
+          ✓ Quotes: 3 found
+          ✗ Statistics: not found
+          ✗ Methodology summary: not found
+
+        Is this correct? For the missing items — do you have them,
+        or should we proceed without?
+
+You:    Solo project. I don't have stats — can you find some?
+
+Claude: [searches for current statistics from named sources, dates them]
+        [drafts 4-page Phase 1 Discovery Brief with paired stats,
+         emotional arc, framework page, opportunities, HMW question]
+        [self-audits on 4 dimensions, flags weakest, delivers]
+
+        Project State block ready. Paste it back when you start Phase 2.
+
+You:    /peer-review
+        [reads the brief, scores it, highlights the 3 sections to push
+         harder on, names specific paragraphs that read AI-generic]
 ```
 
-Quality nudges happen, but they're light. One nudge max per input. Never a rejection.
+You said "write my case study." The skill said "let me extract what you actually have, then write a 4-page brief with sourced statistics and a self-audit" — because it listened to your research, not your request for a template. End to end, one paste. That is not a generator. That is a team.
 
-"Women aged 25-40" → nudge: "That's a demographic. Can you add a life phase? E.g., 'in early stages of motherhood.'"
+## The diamond
 
-"Build a childcare app" → nudge: "That's a solution. Frame it as a direction: 'improving childcare access.'"
+ux-case-study-writer is a process, not a template. The phases run in the order the double diamond runs:
 
-**Stage 4: Confirm & Draft.** Shows an input summary. Then drafts. No extra confirmation step. The summary IS the confirmation.
+**Discover → Empathize → Converge → Deliver**
 
-At the end, you get a Project State block. Paste it back when you start the next phase. Zero infrastructure. Just copy-paste continuity.
+Each phase feeds into the next. Phase 1 writes the HMW that Phase 2 opens back up. Phase 2 produces the personas that Phase 3 scores into a single problem. Phase 3 writes the formal need statement that Phase 4 turns into a named solution. Nothing falls through the cracks because every phase knows what came before it via a copy-pasted Project State block.
 
-### The skip path
+| Phase | Your specialist | What they do |
+|-------|----------------|--------------|
+| **Phase 1: Discovery Brief** | **The Researcher** | Start here. Funnels global context into a sharp HMW question. Six mandatory inputs, ten optional ones that make it better. 4-page brief with paired statistics, emotional arc, framework, and opportunities. 12 documented failure modes. The skill checks against all 12 before delivering. |
+| **Phase 2: Empathy Deepening** | **The Ethnographer** | Takes the Phase 1 HMW and blows it open. Adds fieldwork, bodystorming, second-wave interviews. 23 inputs across 4 clusters; 5 auto-fill from Phase 1. Produces filtration funnel, stakeholder map (3 rings, 15+ entities), contrasting personas, problem-space mind-map (30+ sub-issues), experience map, invalidated assumptions. |
+| **Phase 3: Problem Convergence** | **The Strategist** | Scores candidate problems, picks one, maps its ecosystem, builds the business case, refines the HMW into sub-HMWs and a formal need statement. 31 inputs across 4 clusters; 9 carry forward automatically. Accepts any scoring format — spreadsheet paste, ranked lists, summary narratives. The insight matters more than the matrix. |
+| **Phase 4: Solution Design** | **The Designer** | The payoff. Names the solution. Shows the features. Presents validation data with methodology. Maps the service flow. Closes with the impact framework return. 36 inputs across 5 clusters; 9 carry forward. This is where the stat from Phase 1 gets reactivated to show the full arc of the research. |
+| **The Wizard (triage)** | **Smart Triage** | Parses your pasted mess against 12 pattern types: quotes, stats, HMW sentences, life-phase language, country names, journey stages, scoring matrices, feature descriptions, FAQs, and more. Shows ✓/✗/~ per cluster. Never guesses silently. Three messages, max. |
+| **Peer Review** | **The Reviewer** | Scores every brief on 4 dimensions before delivery: AI-Likeness (lower is better), Funnel Discipline, Evidence Rigor, Synthesis Sharpness. Flags the weakest dimension with a specific fix. Diagnostic, not a gate — the brief always ships. |
 
-Don't want the wizard? Say "just write my Phase 2."
+### Which phase should I use?
 
-The skill checks your message for extractable inputs:
-- **>70% mandatory inputs found** — drafts with gaps flagged
-- **40-70% found** — "I can draft, but Pages X-Y will be generic. Want to spend 10 minutes on the top 3 missing items?"
-- **<40% found** — "I need more. Here are the 5 things that would make the biggest difference."
+| You have... | Phase to run | Why |
+|-------------|--------------|-----|
+| **No prior research** | Phase 1 | Start at the start of the diamond. |
+| **An HMW but no fieldwork** | Phase 2 | You've defined; now empathize. |
+| **Personas but haven't picked a problem** | Phase 3 | You've empathized; now converge. |
+| **A designed solution** | Phase 4 | You've converged; now deliver. |
+| **All of the above** | Run them in sequence, paste the Project State block between phases. |
 
-It never fully blocks. If you insist, it drafts with `[ASSUMPTION-BASED]` markers and reflects the gaps in self-audit scores.
-
-### What the wizard won't do
-
-- Ask for inputs you already provided in your paste
-- Ask more than 3 questions without offering to proceed
-- Reject an input (it nudges, never gates)
-- Load all 4 phase specs to figure out which phase you need
-- Re-ask fields that exist in your Project State block
-- Force itself on you. The wizard is the recommended path, not the only path.
-
----
-
-## The 5 rules
+### The 5 rules
 
 Everything else in this skill is guidance. These 5 are enforced.
 
@@ -140,149 +143,59 @@ Everything else in this skill is guidance. These 5 are enforced.
 |---|------|---------------|
 | 1 | **Diamond shape.** P1 narrows, P2 expands, P3 narrows, P4 delivers. | Break this and the case study's argument doesn't work. |
 | 2 | **No fabrication.** Every stat sourced. Every quote verbatim. | One fake number and your portfolio is a liability. |
-| 3 | **No solution leakage.** No products or apps mentioned before Phase 4. | Naming a solution in the research phase kills design freedom. |
-| 4 | **Continuity checkpoint.** Restate HMW, user, geography at each phase start. | Prevents your case study from silently drifting between rounds. |
+| 3 | **No solution leakage.** No products or apps named before Phase 4. | Naming a solution in the research phase kills design freedom. |
+| 4 | **Continuity checkpoint.** Restate HMW, user, geography at each phase start. | Prevents your case study from silently drifting between phases. |
 | 5 | **Never silently resolve conflicts.** Surface contradictions, let the user choose. | Your research, your call. |
 
 That's it. 5 constraints. Not 50.
 
----
+### Karpathy's four failure modes? Already covered.
 
-## What's inside each phase
+Andrej Karpathy's coding rules nail four failure modes: wrong assumptions, overcomplexity, orthogonal edits, imperative over declarative. ux-case-study-writer enforces the case-study equivalents. The wizard forces hidden assumptions into the open before the brief is drafted (rule 5: surface contradictions). The 4-phase split prevents overcomplexity by loading one playbook at a time. The Project State block prevents orthogonal edits across phases — if the HMW drifts, the continuity checkpoint catches it. And the playbooks are declarative: they specify what each section IS, not how to write each sentence. If you already use Karpathy-style rules for code, ux-case-study-writer is the equivalent enforcement layer for design-thinking writing.
 
-### Phase 1: Discovery Brief
+### Power tools
 
-The funnel phase. Every section is more specific than the last.
+| Component | What it does |
+|-----------|-------------|
+| `references/wizard.md` | **Smart Triage** — the 4-stage input collection flow. Triage → Extract → Fill Gaps → Confirm & Draft. Parses messy paste against 12 pattern types. Never blocks, never silently guesses. |
+| `references/peer-review.md` | **Second Opinion** — independent peer review checklist for humans or AI. Run it after the self-audit to catch what the self-audit missed. |
+| `rounds/0N-*/inputs.md` | **Input Manifest** — the full input list per phase, organized by cluster. Auto-fill markers show which inputs carry over from prior phases. |
+| `examples/round-1-gold.md` | **Worked Example** — full 4-page Phase 1 brief with actual prose. The pattern you're matching. |
+| `examples/working-mothers-overview.md` | **End-to-End Walkthrough** — all 4 phases of Team Dua's working-mothers project, summarized so you can see how Phase 1 feeds Phase 4. |
+| `examples/adaptation-guide.md` | **Domain Adaptation** — 3 sketches showing how the structural patterns transfer across geographies and domains (health, fintech, climate). |
 
-```
-Global context → National perspective → Sub-group impact → Individual voices
-→ Emotional journey → Framework → Opportunities → HMW question
-```
+## Parallel briefs
 
-6 mandatory inputs. 10 optional ones that make it better. ~15 minutes of conversation.
+ux-case-study-writer works well with one brief. It gets interesting with four phases of the same project running in parallel review.
 
-The playbook specifies everything down to paragraph length, stat pair types (disparity+severity, belief+behavior), the exact structure of insight blocks (operational + relational + emotional), and why your emotional arc needs a scope disclaimer.
+**Research is at the heart.** The Researcher specialist (Phase 1) builds the foundation. Every downstream phase quotes from it. The HMW it produces is the load-bearing sentence in the entire case study. Get this wrong and everything that follows compounds the error.
 
-12 documented failure modes. Things like: "The funnel didn't narrow." "Statistics aren't paired." "No resilience paragraph after the interview insights." "Opportunities are solutions." The skill checks against all 12 before delivering.
+**The wizard is how you collect inputs without the blank-form anxiety.** You describe what you have. It parses your paste against 12 pattern types. Then it shows you what it found in a ✓/✗/~ grid, asks one focused question per missing mandatory input (with an example, and a common mistake to avoid), and gives you the top 3 optional inputs that would most improve the output. Quality nudges happen, but they're light. One nudge max per input. Never a rejection. "Women aged 25-40" → nudge: "That's a demographic. Can you add a life phase? E.g., 'in early stages of motherhood.'" "Build a childcare app" → nudge: "That's a solution. Frame it as a direction: 'improving childcare access.'"
 
-### Phase 2: Empathy Deepening
+**The playbooks are the product.** People think "just give Claude the right prompt and it'll write a good case study." Reality: Claude writes a good case study when it has a 472-line playbook telling it that Page 2's Interview Insights section needs exactly 3 insight blocks covering operational + relational + emotional flavors, each with a unique icon description and a bolded 2-4 word noun phrase, followed by a pull quote with dual-standing attribution, followed by two closing nuance paragraphs — one about a related stakeholder's perspective, one about the affected group's resilience. Without that specificity, you get generic prose that passes a casual read but fails any reviewer who's done research themselves. The playbooks total ~2,300 lines across 4 phases. They're the reason the output matches a specific portfolio style instead of reading like every other AI-generated case study.
 
-Takes your Phase 1 HMW and blows it open. Adds fieldwork, bodystorming, second-wave interviews.
+**The diamond shape is what makes the case study argue.** Without the shape, four phases is four sources of chaos. With the shape — discover, empathize, converge, deliver — each phase knows exactly what to do and when to stop. You manage them the way a CEO manages a team: check in on the decisions that matter (HMW pivots, persona contrast, scoring rationale, solution naming), let the rest run.
 
-23 inputs across 4 clusters. 5 auto-fill from your Project State. The rest come from your actual research.
+**Self-audit on every brief.** Every phase self-audits on 4 dimensions before delivery: AI-Likeness, Funnel Discipline, Evidence Rigor, Synthesis Sharpness. If a dimension misses its target, the skill revises before delivering. But scores are diagnostic, not a gate. The brief always ships. The scores just tell you where to push harder.
 
-Produces: filtration funnel, stakeholder map (3 rings, 15+ entities), contrasting personas, problem-space mind-map (30+ sub-issues), experience map, invalidated assumptions.
+**Cross-check patterns catch things individual scores miss.** Pretty prose + weak research (low AI-Likeness, low Evidence) — needs more desk research, not better writing. Great narrative + vague landing (high Funnel, low Synthesis) — tighten the HMW. Solid data + generic voice (high Evidence, high AI-Likeness) — rewrite for voice, don't touch the data.
 
-15 failure modes. The big ones: personas aren't meaningfully contrasting, stakeholder map is too thin, assumptions aren't actually invalidated with evidence.
+**The wizard isn't the only path.** Don't want it? Say "just write my Phase 2." The skill checks your message for extractable inputs and decides: >70% mandatory inputs found → drafts with gaps flagged. 40-70% found → "I can draft, but Pages X-Y will be generic. Want to spend 10 minutes on the top 3 missing items?" <40% found → "I need more. Here are the 5 things that would make the biggest difference." It never fully blocks. If you insist, it drafts with `[ASSUMPTION-BASED]` markers and reflects the gaps in the self-audit scores.
 
-### Phase 3: Problem Convergence
+**Solo is the default.** 90%+ of portfolio builders work alone. If team members are named, team elements (credit line, multi-scorer radar) activate. Solo users never get blocked on missing team inputs.
 
-Scores candidate problems. Picks one. Maps its ecosystem. Builds the business case. Refines the HMW into sub-HMWs and a formal need statement.
+**Geography-agnostic by default.** The structural patterns (funnel, personas, scoring, HMW) are universal. Cultural scripts, data sources, and regulatory context adapt to the user's stated geography. Hardcoded India assumptions are explicitly called out as a gotcha in SKILL.md.
 
-31 inputs across 4 clusters. 9 carry forward automatically.
+**HMW pivots are always allowed.** A pivot means the research worked. The skill notes what changed and flags which prior-phase artifacts may need updating. It doesn't force a full restart for a scope adjustment.
 
-The scoring accepts any format. Spreadsheet paste, summary narratives, ranked lists. The insight matters more than the matrix.
+## What the wizard won't do
 
-Produces: scoring radar chart, ecosystem map, 15+ pain points, regional scenario, business viability with market data, sub-HMWs, formal need statement.
-
-### Phase 4: Solution Design
-
-The payoff. Names the solution. Shows the features. Presents validation data. Maps the service flow. Closes with impact.
-
-36 inputs across 5 clusters. 9 carry forward.
-
-This is where the stat from Phase 1 gets "reactivated" — brought back with new context to show the full arc of the research. The framework from Page 4 of Phase 1 returns to show which dimensions the solution actually addresses.
-
-Produces: cause-effect tree, how-to questions, solution reveal, key features, service flow, FAQs, validation stats, wellbeing framework return, scalability axes.
-
-20 failure modes. Including: "FAQs restate features instead of explaining mechanisms." "Validation data has no methodology details." "Scalability axes are just 'go to more cities.'"
-
----
-
-## The playbooks are the product
-
-People think "just give Claude the right prompt and it'll write a good case study."
-
-Reality: Claude writes a good case study when it has a 472-line playbook telling it that Page 2's Interview Insights section needs exactly 3 insight blocks covering operational + relational + emotional flavors, each with a unique icon description and a bolded 2-4 word noun phrase, followed by a pull quote with dual-standing attribution, followed by two closing nuance paragraphs — one about a related stakeholder's perspective, one about the affected group's resilience.
-
-Without that specificity, you get generic prose that passes a casual read but fails any reviewer who's done research themselves.
-
-The playbooks total ~2,300 lines across 4 phases. They encode:
-- Section-by-section structure with exact lengths and templates
-- Voice rules (first-person plural, past for research, present for findings)
-- Visual design language (coral palette, line-art icons, stat callout sizing)
-- Stat pair types per section
-- Failure modes with specific fixes
-- Scoring benchmarks with 4 dimensions
-- Worked examples showing the pattern on a different topic
-
-These aren't getting condensed. They're the reason the output matches a specific portfolio style instead of reading like every other AI-generated case study.
-
----
-
-## Scoring
-
-Every brief self-audits on 4 dimensions before delivery:
-
-| Dimension | Target | What it catches |
-|-----------|--------|----------------|
-| **AI-Likeness** | 1-3 (lower is better) | "Delve," "navigate the complexities," missing nuance moves, bolded full sentences |
-| **Funnel Discipline** | 8-10 | Same-scope sections, standalone methodology section, no visible narrowing |
-| **Evidence Rigor** | 8-10 | Unsourced stats, unpaired stats, fabricated numbers, vague attributions |
-| **Synthesis Sharpness** | 8-10 | Broad HMW, solution-as-opportunity, flat impact list, missing scope disclaimer |
-
-If a dimension misses its target, the skill revises before delivering. But scores are diagnostic, not a gate. The brief always ships. The scores just tell you where to push harder.
-
-Cross-check patterns catch things individual scores miss:
-
-- **Pretty prose + weak research** (low AI-Likeness, low Evidence) — needs more desk research, not better writing
-- **Great narrative + vague landing** (high Funnel, low Synthesis) — tighten the HMW
-- **Solid data + generic voice** (high Evidence, high AI-Likeness) — rewrite for voice, don't touch the data
-
----
-
-## Design decisions
-
-These came out of a 21-question council process. Four voices — Architect, Skeptic, Pragmatist, Critic — argued every constraint.
-
-| Decision | Verdict | Why |
-|----------|---------|-----|
-| Solo vs. team | Solo is default | 90%+ of portfolio builders work alone |
-| Geography | Agnostic | Structural patterns transfer. Cultural specifics come from user input. |
-| Impact framework | Domain-dependent | Wellbeing radar works for health. Not for fintech. Let users pick. |
-| No interviews? | Proceed with gaps noted | Meet users where they are. Label assumption-based sections. |
-| Template vs. draft | Draft-first | Users need momentum, not another blank form. |
-| State persistence | Copy-paste Project State block | Zero infrastructure. Works across sessions. |
-| HMW pivots | Always allowed | A pivot means the research worked. |
-| Wizard | Recommended, not required | Some users just want to paste and go. |
-
----
-
-## Repo structure
-
-```
-ux-case-study-writer/
-├── SKILL.md                              # Master orchestrator. 5 rules, guidance, operating procedure.
-├── references/
-│   ├── wizard-protocol.md                # The 4-stage input collection flow
-│   ├── phase-1-discovery.md              # 472-line Phase 1 writing playbook
-│   ├── phase-2-empathy.md                # 546-line Phase 2 writing playbook
-│   ├── phase-3-convergence.md            # 617-line Phase 3 writing playbook
-│   ├── phase-4-solution.md               # 706-line Phase 4 writing playbook
-│   ├── input-checklist-phase-1.md        # 16 inputs across 3 clusters
-│   ├── input-checklist-phase-2.md        # 23 inputs across 4 clusters
-│   ├── input-checklist-phase-3.md        # 31 inputs across 4 clusters
-│   ├── input-checklist-phase-4.md        # 36 inputs across 5 clusters
-│   └── peer-review-guide.md             # Evaluation checklist for humans or AI
-└── examples/
-    ├── gold-standard-phase-1.md          # Full 4-page Phase 1 brief with actual prose
-    ├── working-mothers-overview.md       # All 4 phases summarized (Team Dua project)
-    └── adaptation-guide.md               # 3 domain adaptation sketches
-```
-
-The SKILL.md is ~190 lines. It points to everything else. Claude loads one phase spec at a time — never all 2,300 lines at once.
-
----
+- Ask for inputs you already provided in your paste
+- Ask more than 3 questions in a row without offering to proceed
+- Reject an input (it nudges, never gates)
+- Load all 4 phase specs to figure out which phase you need
+- Re-ask fields that exist in your Project State block
+- Force itself on you. The wizard is the recommended path, not the only path.
 
 ## The input math
 
@@ -295,45 +208,112 @@ Total across all 4 phases: ~106 inputs. Sounds heavy. But 32 auto-carry from pre
 
 The honest version: more inputs = better output. All mandatory inputs only gets you a competent draft. All inputs filled gets you portfolio-grade on the first pass.
 
+## Uninstall
+
+### Option 1: Remove the skill directory
+
+```bash
+rm -rf ~/.claude/skills/ux-case-study-writer
+```
+
+### Option 2: Per-project cleanup
+
+If you vendored it into a portfolio repo with `git submodule`:
+
+```bash
+git submodule deinit .claude/skills/ux-case-study-writer
+git rm .claude/skills/ux-case-study-writer
+rm -rf .git/modules/.claude/skills/ux-case-study-writer
+git commit -m "remove ux-case-study-writer skill"
+```
+
+### Clean up CLAUDE.md
+
+The uninstall does not edit CLAUDE.md. In each project where the skill was added, remove the `## ux-case-study-writer` section.
+
 ---
 
-## Quick start
+Free, MIT licensed, open source. No premium tier, no waitlist.
+
+I open-sourced how I write case studies. You can fork it and make it your own.
+
+> **Contributions welcome.** PRs that add worked examples in new domains (fintech, climate, healthcare), tighten failure-mode catalogs, or improve the wizard's pattern recognition are especially helpful. Open an issue first if it's a larger change.
+
+## Repo structure
 
 ```
-You: "write my case study"
-Claude: "Which phase — 1, 2, 3, or 4?"
-You: "1"
-Claude: "Paste your Project State from a prior phase, or tell me your topic and target user."
-You: [paste notes]
-Claude: [extracts, shows what's found, asks about gaps]
-You: [fill a few gaps]
-Claude: [drafts 4-page brief with stats, visual specs, self-audit]
+ux-case-study-writer/
+├── SKILL.md                              # Master orchestrator. 5 rules, guidance, operating procedure.
+├── rounds/
+│   ├── 01-discovery/
+│   │   ├── playbook.md                   # 472-line Phase 1 writing playbook
+│   │   └── inputs.md                     # 16 inputs across 3 clusters
+│   ├── 02-empathy/
+│   │   ├── playbook.md                   # 546-line Phase 2 writing playbook
+│   │   └── inputs.md                     # 23 inputs across 4 clusters
+│   ├── 03-convergence/
+│   │   ├── playbook.md                   # 617-line Phase 3 writing playbook
+│   │   └── inputs.md                     # 31 inputs across 4 clusters
+│   └── 04-solution/
+│       ├── playbook.md                   # 706-line Phase 4 writing playbook
+│       └── inputs.md                     # 36 inputs across 5 clusters
+├── references/
+│   ├── wizard.md                         # The 4-stage input collection flow
+│   └── peer-review.md                    # Evaluation checklist for humans or AI
+└── examples/
+    ├── round-1-gold.md                   # Full 4-page Phase 1 brief with actual prose
+    ├── working-mothers-overview.md       # All 4 phases summarized (Team Dua project)
+    └── adaptation-guide.md               # 3 domain adaptation sketches
 ```
 
-Or skip the wizard entirely:
+The SKILL.md is ~190 lines. It points to everything else. Claude loads one phase spec at a time — never all 2,300 lines at once.
+
+## Docs
+
+| Doc | What it covers |
+|-----|---------------|
+| [SKILL.md](SKILL.md) | The 5 hard constraints, guidance, operating procedure |
+| [Wizard Protocol](references/wizard.md) | The 4-stage input collection flow with the 12 pattern types |
+| [Peer Review Guide](references/peer-review.md) | Evaluation checklist for humans or AI |
+| [Gold Standard Example](examples/round-1-gold.md) | Full 4-page Phase 1 brief with actual prose |
+| [Working Mothers Walkthrough](examples/working-mothers-overview.md) | All 4 phases of Team Dua's project |
+| [Adaptation Guide](examples/adaptation-guide.md) | 3 domain adaptation sketches |
+
+## Privacy & Telemetry
+
+ux-case-study-writer is pure Markdown. There is no telemetry, no analytics, no phone-home. The skill runs entirely inside your Claude Code session. Your research notes, interview quotes, and draft briefs never leave your machine — unless you paste them somewhere yourself.
+
+- **Default is off, because there is no default-on.** Nothing is sent anywhere, ever.
+- **What's collected:** nothing.
+- **What's stored:** nothing.
+- **Change anytime:** N/A, because there's nothing to change.
+
+If you want analytics, run Claude Code's built-in usage tools. This skill adds nothing on top.
+
+## Troubleshooting
+
+**Skill not triggering?** Make sure your project's `CLAUDE.md` mentions the skill or that you typed one of the trigger phrases ("write my case study", "case study Round N", "discovery brief", "empathy phase", "problem narrowing", "solution brief").
+
+**Wizard asking too many questions?** Tell it: "just write my Phase 1 with what I gave you." It will draft with `[ASSUMPTION-BASED]` markers and reflect the gaps in self-audit scores.
+
+**Output reads AI-generic?** Run `references/peer-review.md` against it. Look at the AI-Likeness dimension. Common fix: rewrite for voice, don't touch the data. Look for "delve," "navigate the complexities," "in today's fast-paced world," "comprehensive," "holistic," "robust" as filler — those are the tells.
+
+**Stats fabricated or unsourced?** That's a Rule 2 violation. Tell Claude: "remove every stat without a named source and a date." Then provide the missing ones or proceed with fewer.
+
+**Solution leaked in Phase 1 or 2?** That's a Rule 3 violation. Tell Claude: "rewrite opportunities as directions, not products. No app names, no platform names, no specific solutions before Phase 4."
+
+**HMW drifted between phases?** That's a Rule 4 violation. Tell Claude: "restate the HMW from the prior Project State block and acknowledge what changed."
+
+**Claude says it can't see the skill?** Make sure your project's `CLAUDE.md` has a section like this:
 
 ```
-You: "Phase 1. Topic: financial literacy for young professionals in India.
-     Target user: first-time earners navigating independent finances.
-     Geography: urban India. Solo project.
-     I interviewed 4 people and here are my notes: [paste]"
-Claude: [extracts inputs, drafts directly]
+## ux-case-study-writer
+Trigger on: "write my case study", "case study Round N", "discovery brief",
+"empathy phase", "problem narrowing", "solution brief", "design my portfolio
+case study", or any request for a structured design-thinking deliverable.
+Skill location: ~/.claude/skills/ux-case-study-writer/SKILL.md
 ```
-
----
-
-## Origin
-
-Started as 4 separate case study phase skills reverse-engineered from a real design school project (Team Dua's working-mothers wellbeing case study, India).
-
-Got consolidated into one skill. Then stress-tested through a 21-question grill and a 4-voice council debate. The council killed most of the constraints. What survived: 5 rules and a lot of detailed playbooks.
-
-The playbooks encode a specific visual and narrative style — soft pastels, coral palette, paired statistics, progressive funnel narrowing, nuance moves after every interview section, zigzag emotional arcs with scope disclaimers. It's opinionated. That's the point.
-
-Generic case study generators exist. This one produces output that looks like a specific team wrote it after months of research.
-
----
 
 ## License
 
-MIT
+MIT. Free forever. Go write something portfolio-grade.

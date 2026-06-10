@@ -678,7 +678,7 @@ When the user invokes this skill:
 
 2. **Identify the loop-closure anchors.** Note: the Round 1 wellbeing framework, the Round 3 Need Statement (verbatim), the most powerful hero stat from earlier rounds, and the chosen problem area from Round 3. These will appear in Round 4 unchanged.
 
-3. **Verify inputs against the input checklist.** Read `references/input-checklist.md`. If mandatory inputs are missing, ask before drafting.
+3. **Verify inputs against the input checklist.** Read `inputs.md` (sibling file in this round folder). If mandatory inputs are missing, ask before drafting.
 
 4. **Verify the solution has been actually designed and tested.** Round 4 cannot fabricate the solution. If the team hasn't done co-creation and A/B testing, the validation stats will be fake. Ask honestly: did the team do the design work? If not, the brief either needs to be drafted with smaller-scale honest numbers, or the team needs to do the design work first.
 
@@ -703,4 +703,4 @@ When the user invokes this skill:
 
 ## Reference files
 
-- `references/input-checklist.md` — The full list of mandatory and high-value optional inputs the user should provide before invoking the skill, plus a fillable template. Read at the start of every invocation.
+- `inputs.md` (sibling file in this round folder) — The full list of mandatory and high-value optional inputs the user should provide before invoking the skill, plus a fillable template. Read at the start of every invocation.

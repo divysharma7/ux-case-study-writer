@@ -517,7 +517,7 @@ When the user invokes this skill:
 
 1. **Verify Round 1 exists.** Confirm the user has a completed Round 1 HMW question and the surrounding context (target user, geography, team). If they don't, suggest they invoke `discovery-brief-case-study` first and return when Round 1 is complete. Do not draft Round 2 without a Round 1 anchor — the expansion logic only works if there's a sharp problem statement to expand from.
 
-2. **Verify inputs against the input checklist.** Read `references/input-checklist.md` and confirm the user has provided the mandatory Round 2 inputs. If anything mandatory is missing, ask for it before drafting. If high-value optional inputs are missing, note which ones and explain how their absence will limit the output's quality.
+2. **Verify inputs against the input checklist.** Read `inputs.md` (sibling file in this round folder) and confirm the user has provided the mandatory Round 2 inputs. If anything mandatory is missing, ask for it before drafting. If high-value optional inputs are missing, note which ones and explain how their absence will limit the output's quality.
 
 3. **Do real research.** Search the web for current statistics relevant to the filtration funnel, cultural context, and existing services. Cite named sources. Do not fabricate. If a statistic can't be sourced, remove the claim.
 
@@ -543,4 +543,4 @@ When the user invokes this skill:
 
 ## Reference files
 
-- `references/input-checklist.md` — The full list of mandatory and high-value optional inputs the user should provide before invoking the skill, plus a fillable template. Read at the start of every invocation to verify inputs.
+- `inputs.md` (sibling file in this round folder) — The full list of mandatory and high-value optional inputs the user should provide before invoking the skill, plus a fillable template. Read at the start of every invocation to verify inputs.
